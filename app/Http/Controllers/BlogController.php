@@ -39,5 +39,14 @@ class BlogController extends Controller
     {
         return view('blogs.show',compact ('blog'));
     }
+    public function edit (Blog $blog)
+    {
+        return view('blogs.edit',compact ('blog'));
+    }
+    public function update(Request $request, Blog $blog)
+    {
+        $blog->update($request->only('title','content'));
+        return redirect()-> route('blogs.index');
+    }
 
 }
