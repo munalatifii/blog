@@ -48,5 +48,10 @@ class BlogController extends Controller
         $blog->update($request->only('title','content'));
         return redirect()-> route('blogs.index');
     }
+    public function delete(Blog $blog)
+    {
+        $blog->delete();
+        return redirect()-> route('blogs.index');
+    }
 
 }

@@ -34,7 +34,8 @@
                                 <td>{{ $blog->updated_at}}</td>
                                 <td>
                                     <a href="{{ route('blogs.show', $blog)}}" class="btn btn-primary">Show</a>
-                                    <a href="{{ route('blogs.edit', $blog)}}" class="btn btn-primary">Edit</a>                                    
+                                    <a href="{{ route('blogs.edit', $blog)}}" class="btn btn-primary">Edit</a> 
+                                    <a href="{{ route('blogs.delete', $blog)}}" class="btn btn-primary">Delete</a>                                    
                                 </td>
                             </tr>
                             @endforeach
