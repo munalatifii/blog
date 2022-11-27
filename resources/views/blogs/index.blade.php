@@ -29,18 +29,19 @@
                                 <td>{{ $blog->id}}</td>
                                 <td>{{ $blog->title}}</td>
                                 <td>{{ $blog->content}}</td>
-                                <td>{{ $blog->user->name}}</td>
+                                <td>{{ $blog->user_id ? $blog->user->name: ''}}</td>
                                 <td>{{ $blog->created_at}}</td>
                                 <td>{{ $blog->updated_at}}</td>
                                 <td>
                                     <a href="{{ route('blogs.show', $blog)}}" class="btn btn-primary">Show</a>
-                                    <a href="{{ route('blogs.edit', $blog)}}" class="btn btn-primary">Edit</a> 
-                                    <a href="{{ route('blogs.delete', $blog)}}" class="btn btn-primary">Delete</a>                                    
+                                    <a href="{{ route('blogs.edit', $blog)}}" class="btn btn-secondary">Edit</a> 
+                                    <a href="{{ route('blogs.delete', $blog)}}" class="btn btn-danger">Delete</a>                                    
                                 </td>
                             </tr>
                             @endforeach
                         </tbody>
                     <table>
+                        {{ $blogs->links()}}
                 </div>
             </div>
         </div>

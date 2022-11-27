@@ -17,7 +17,11 @@
                         <label for="content">Content</label>
                         <textarea class="form-control" value="{{ $blog->content}}" id="content" name="content" rows="3"></textarea>
                     </div>
-                    <a href="{{ route ('blogs.index') }}" class="btn btn-secondary">Back</a>
+                    <div class="form-group">
+                        <label for="attachment">Attachment</label>
+                        <a href="{{config('app.url')}}/storage/{{$blog->attachment}}" target="_blank">Open attachment</a>
+                    </div>
+                    <a href="{{route ('blogs.index')}}" class="btn btn-secondary">Back</a>
                 </div>
             </div>
         </div>

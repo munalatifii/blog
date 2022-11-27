@@ -20,14 +20,20 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/blogs', [App\Http\Controllers\BlogController::class, 'index'])->name('blogs.index');
-Route::get('/blogs/create', [App\Http\Controllers\BlogController::class, 'create'])->name('blogs.create');
-Route::post('/blogs/create', [App\Http\Controllers\BlogController::class, 'store'])->name('blogs.store');
-Route::get('/bgitlogs/{blog}', [App\Http\Controllers\BlogController::class, 'show'])->name('blogs.show');
-Route::get('/blogs/{blog}/edit', [App\Http\Controllers\BlogController::class, 'edit'])->name('blogs.edit');
-Route::post('/blogs/{blog}/edit', [App\Http\Controllers\BlogController::class, 'update'])->name('blogs.update');
-Route::get('/blogs/{blog}/delete', [App\Http\Controllers\BlogController::class, 'delete'])->name('blogs.delete');
 
+Route::group(['middleware' =>'auth',
+'prefix'=>'blogs',
+'as'=>'blogs.'
+],function(){
+Route::get('/', [App\Http\Controllers\BlogController::class, 'index'])->name('index');
+Route::get('/create', [App\Http\Controllers\BlogController::class, 'create'])->name('create');
+Route::post('/create', [App\Http\Controllers\BlogController::class, 'store'])->name('store');
+Route::get('/{blog}', [App\Http\Controllers\BlogController::class, 'show'])->name('show');
+Route::get('/blogs/{blog}/edit', [App\Http\Controllers\BlogController::class, 'edit'])->name('edit');
+Route::post('/{blog}/edit', [App\Http\Controllers\BlogController::class, 'update'])->name('update');
+Route::get('/{blog}/delete', [App\Http\Controllers\BlogController::class, 'delete'])->name('delete');
+
+});
 
 
 
